@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Posting Platform</title>
+</head>
+<style>
+    body{
+        background-image:url(https://img.freepik.com/free-photo/executive-touching-icon-social-network_1232-158.jpg?size=626&ext=jpg&ga=GA1.1.598116300.1710400447&semt=sph);
+       
+        
+        background-size: cover;
+    }
+</style>    
+<style>
+    container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+</style>
+<body>
+    <header>
+        <h1>Welcome to our Job Posting Platform</h1>
+    </header>
+    <main>
+        <section id="job-postings">
+            {% for job in job_postings %}
+            <div class="job">
+                <h2>{{ job.title }}</h2>
+                <p><strong>Company:</strong> {{ job.company }}</p>
+                <p>{{ job.description }}</p>
+            </div>
+            {% endfor %}
+        </section>
+        <section id="post-job">
+            <h2>Post a Job</h2>
+            <form action="/post_job" method="post">
+                <input type="text" name="job_title" placeholder="Job Title" required><br>
+                <input type="text" name="company_name" placeholder="Company Name" required><br>
+                <textarea name="job_description" placeholder="Job Description" required></textarea><br>
+                <button type="submit">Post Job</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
